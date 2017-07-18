@@ -1,62 +1,78 @@
-/*package com.niit.model;
+package com.niit.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table
 
 public class Customer {
-String cusid,cname,cuspswrd,cusemail,cusadd,cusphn;
+int cusid;
+String cusname;
+int pswd;
+String email;
+String cusadd;
+int phnno;
+String username;
+String userrole;
 @Id
-public String getCusid() {
+public int getCusid() {
 	return cusid;
 }
-
-public void setCusid(String cusid) {
+public void setCusid(int cusid) {
 	this.cusid = cusid;
 }
 @Column
-public String getCname() {
-	return cname;
+public String getCusname() {
+	return cusname;
 }
-
-public void setCname(String cname) {
-	this.cname = cname;
-}
-@Column
-public String getCuspswrd() {
-	return cuspswrd;
-}
-
-public void setCuspswrd(String cuspswrd) {
-	this.cuspswrd = cuspswrd;
+public void setCusname(String cusname) {
+	this.cusname = cusname;
 }
 @Column
-public String getCusemail() {
-	return cusemail;
+public int getpswd() {
+	return pswd;
 }
-
-public void setCusemail(String cusemail) {
-	this.cusemail = cusemail;
+public void setpswd(int pswd) {
+	this.pswd = pswd;
+}
+@Column
+public String getemail() {
+	return email;
+}
+public void setemail(String email) {
+	this.email = email;
 }
 @Column
 public String getCusadd() {
 	return cusadd;
 }
-
 public void setCusadd(String cusadd) {
 	this.cusadd = cusadd;
 }
 @Column
-public String getCusphn() {
-	return cusphn;
+public int getphnno() {
+	return phnno;
+}
+public void setphnno(int phnno) {
+	this.phnno = phnno;
+}
+@Column
+public String getUsername() {
+	return username;
+}
+public void setUsername(String username) {
+	this.username = username;
+}
+@Column
+public String getUserrole() {
+	return userrole;
+}
+public void setUserrole(String userrole) {
+	this.userrole = userrole;
 }
 
-public void setCusphn(String cusphn) {
-	this.cusphn = cusphn;
 }
-}
-*/

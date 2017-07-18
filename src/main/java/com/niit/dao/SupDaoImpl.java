@@ -9,27 +9,29 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Catagory;
-@Repository("catagoryDAO")
+import com.niit.model.Supplier;
+@Repository("supplierDAO")
 
 @Transactional
-public class CatDaoImpl implements CatDao {
-	 @Autowired
+public class SupDaoImpl implements SuppDao
+{
+	@Autowired
 	 SessionFactory sessionFactory;
 	 @Override
-	 public List< Catagory > getAllCatagory () {
+	 public List<Supplier>getAllSupplier () {
 	  Session session = sessionFactory.openSession();
-	  Query query = session.createQuery("from Catagory "); // HQL is used here
+	  Query query = session.createQuery("from Supplier "); // HQL is used here
 	               // not SQL
-	  List <Catagory> productlist=query.list();
+	  List < Supplier > Supplierlist=query.list();
 	  session.close();
-	  return productlist;
+	  return Supplierlist;
 	  }
 	 
 	 @Override
-	 public boolean savecat(Catagory c) {
+	 public boolean savesup(Supplier s) {
 	  try {
 	   Session session = sessionFactory.openSession();
-	   session.save(c);
+	   session.save(s);
 	   session.flush();
 	   session.close();
 	  } catch (Exception e) {
@@ -40,13 +42,13 @@ public class CatDaoImpl implements CatDao {
 	 }
 	 
 	 @Override
-	 public boolean deletecatById(int catid) {
+	 public boolean deletesupById(int supid) {
 	  try {
 	   Session session = sessionFactory.openSession();
-	   Catagory c = (Catagory) session.get(Catagory.class, catid);
-	   if (c == null)
+	   Supplier s = (Supplier) session.get(Supplier.class, supid);
+	   if (s == null)
 	    return false;
-	   session.delete(c);
+	   session.delete(s);
 	   session.flush();
 	   session.close();
 	  } catch (Exception e) {
@@ -57,10 +59,10 @@ public class CatDaoImpl implements CatDao {
 	 }
 	 
 	 @Override
-	 public boolean updatecat(Catagory c) {
+	 public boolean updatesup(Supplier s) {
 	  try {
 	   Session session = sessionFactory.openSession();
-	   session.update(c);
+	   session.update(s);
 	   session.flush();
 	   session.close();
 	  } catch (Exception e) {
@@ -71,13 +73,11 @@ public class CatDaoImpl implements CatDao {
 	 }
 
 	 @Override
-	 public Catagory getcatById(int catid) {
+	 public Supplier getsupById(int supid) {
 
 	  Session session = sessionFactory.openSession();
-	  Catagory c = (Catagory) session.get(Catagory.class, catid);
+	  Supplier s = (Supplier) session.get(Supplier.class, supid);
 	  session.close();
-	  return c;
+	  return s;
 	 }
-
-	 
 }
