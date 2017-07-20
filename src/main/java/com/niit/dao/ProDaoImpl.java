@@ -19,7 +19,7 @@ public class ProDaoImpl implements ProDao{
 		  Session session = sessionFactory.openSession();
 		  Query query = session.createQuery("from Product "); // HQL is used here
 		               // not SQL
-		  List <Product> Productlist=query.list();
+		  List < Product > Productlist= query.list();
 		  session.close();
 		  return Productlist;
 		  }
@@ -28,6 +28,9 @@ public class ProDaoImpl implements ProDao{
 		 public boolean savepro(Product p) {
 		  try {
 		   Session session = sessionFactory.openSession();
+		   Query q= session.createQuery("select max (pid) from Product");
+		   int maxproid=(Integer)q.list().get(0);
+		   p.setPid(maxproid+1);
 		   session.save(p);
 		   session.flush();
 		   session.close();

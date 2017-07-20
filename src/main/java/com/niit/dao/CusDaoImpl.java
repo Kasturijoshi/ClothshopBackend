@@ -28,6 +28,9 @@ public class CusDaoImpl implements CusDao{
 		 public boolean savecus(Customer cs) {
 		  try {
 		   Session session = sessionFactory.openSession();
+		   Query q= session.createQuery("select max (cusid) from customer");
+		   int maxcusid=(Integer)q.list().get(0);
+		   cs.setCusid(maxcusid+1);
 		   session.save(cs);
 		   session.flush();
 		   session.close();

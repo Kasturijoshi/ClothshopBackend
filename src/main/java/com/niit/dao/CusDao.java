@@ -1,6 +1,5 @@
 package com.niit.dao;
 import java.util.List;
-
 import com.niit.model.Customer;
 public interface CusDao {
 	public List <Customer>getAllCustomer();

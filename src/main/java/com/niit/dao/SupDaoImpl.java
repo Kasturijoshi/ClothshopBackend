@@ -31,6 +31,9 @@ public class SupDaoImpl implements SuppDao
 	 public boolean savesup(Supplier s) {
 	  try {
 	   Session session = sessionFactory.openSession();
+	   Query q= session.createQuery("select max (supid) from Supplier");
+	   int maxsupid=(Integer)q.list().get(0);
+	   s.setSupid(maxsupid+1);
 	   session.save(s);
 	   session.flush();
 	   session.close();
@@ -66,7 +69,7 @@ public class SupDaoImpl implements SuppDao
 	   session.flush();
 	   session.close();
 	  } catch (Exception e) {
-	   return false;
+	   return false; 
 	  }
 
 	  return true;

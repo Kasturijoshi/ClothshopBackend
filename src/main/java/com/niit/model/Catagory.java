@@ -14,13 +14,13 @@ import javax.validation.constraints.Size;
 public class Catagory {
 @Id
 @NotNull
-String catid;
+int catid;
 
-public String getCatid() {
+public int getCatid() {
 	return catid;
 }
 
-public void setCatid(String catid) {
+public void setCatid(int catid) {
 	this.catid = catid;
 }
 @Column

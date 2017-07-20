@@ -10,15 +10,24 @@ import org.springframework.stereotype.Component;
 @Table
 
 public class Customer {
+	@Id
+	@NotNull
 int cusid;
+	@Column
 String cusname;
+	@Column
 int pswd;
+	@Column
 String email;
+	@Column
 String cusadd;
+	@Column
 int phnno;
+	@Column
 String username;
+	@Column
 String userrole;
-@Id
+
 public int getCusid() {
 	return cusid;
 }

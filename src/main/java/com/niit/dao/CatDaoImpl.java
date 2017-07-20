@@ -20,15 +20,18 @@ public class CatDaoImpl implements CatDao {
 	  Session session = sessionFactory.openSession();
 	  Query query = session.createQuery("from Catagory "); // HQL is used here
 	               // not SQL
-	  List <Catagory> productlist=query.list();
+	  List <Catagory> catagorylist=query.list();
 	  session.close();
-	  return productlist;
+	  return catagorylist;
 	  }
 	 
 	 @Override
 	 public boolean savecat(Catagory c) {
 	  try {
 	   Session session = sessionFactory.openSession();
+	   Query q= session.createQuery("select max(catid) from Catagory");
+	   int maxcatid=(Integer)q.list().get(0);
+	   c.setCatid(maxcatid+1);
 	   session.save(c);
 	   session.flush();
 	   session.close();
@@ -40,7 +43,7 @@ public class CatDaoImpl implements CatDao {
 	 }
 	 
 	 @Override
-	 public boolean deletecatById(int catid) {
+	 public boolean deletecatById(String catid) {
 	  try {
 	   Session session = sessionFactory.openSession();
 	   Catagory c = (Catagory) session.get(Catagory.class, catid);
@@ -71,7 +74,7 @@ public class CatDaoImpl implements CatDao {
 	 }
 
 	 @Override
-	 public Catagory getcatById(int catid) {
+	 public Catagory getcatById(String catid) {
 
 	  Session session = sessionFactory.openSession();
 	  Catagory c = (Catagory) session.get(Catagory.class, catid);
